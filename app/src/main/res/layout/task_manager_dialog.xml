@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<HorizontalScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="240dp"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <!-- Process List Table -->
+        <!-- ========================================================= -->
+        <!-- PROCESS LIST                                               -->
+        <!-- ========================================================= -->
+
         <LinearLayout
             android:layout_width="400dp"
             android:layout_height="match_parent"
@@ -17,17 +23,17 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-            <!-- Unified Clean Table Header -->
+            <!-- Table Header -->
             <LinearLayout
                 android:id="@+id/LLTableHead"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
+                android:layout_marginBottom="6dp"
                 android:background="@drawable/badge_background"
                 android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:layout_marginBottom="6dp"
-                android:orientation="horizontal">
+                android:paddingEnd="8dp">
 
                 <View
                     android:layout_width="30dp"
@@ -35,38 +41,40 @@
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="2dp"
                     android:text="@string/process_name"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
                     android:textColor="?attr/colorAccent"
-                    android:paddingStart="2dp" />
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/pid"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
                     android:gravity="center"
-                    android:textColor="?attr/colorAccent" />
+                    android:text="@string/pid"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/memory"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
                     android:gravity="end"
                     android:paddingEnd="8dp"
-                    android:textColor="?attr/colorAccent" />
+                    android:text="@string/memory"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
                 <View
                     android:layout_width="36dp"
                     android:layout_height="1dp" />
+
             </LinearLayout>
 
+            <!-- Process List -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -76,14 +84,15 @@
                 <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scrollbars="vertical"
-                    android:scrollbarStyle="insideOverlay">
+                    android:scrollbarStyle="insideOverlay"
+                    android:scrollbars="vertical">
 
                     <LinearLayout
                         android:id="@+id/LLProcessList"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical" />
+
                 </ScrollView>
 
                 <TextView
@@ -94,10 +103,16 @@
                     android:text="@string/no_items_to_display"
                     android:textColor="?android:attr/textColorSecondary"
                     android:visibility="gone" />
+
             </FrameLayout>
+
         </LinearLayout>
 
-        <!-- Right Info Panel (CPU + RAM) -->
+
+        <!-- ========================================================= -->
+        <!-- RIGHT INFORMATION PANEL                                   -->
+        <!-- ========================================================= -->
+
         <ScrollView
             android:layout_width="150dp"
             android:layout_height="match_parent"
@@ -108,6 +123,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+
+                <!-- ================================================= -->
+                <!-- CPU PANEL                                          -->
+                <!-- ================================================= -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -120,17 +140,23 @@
                         android:id="@+id/TVCPUTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
                         android:textColor="?attr/colorAccent"
-                        android:textStyle="bold"
                         android:textSize="12.5sp"
-                        android:layout_marginBottom="4dp" />
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:id="@+id/LLCPUInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical" />
+
                 </LinearLayout>
+
+
+                <!-- ================================================= -->
+                <!-- MEMORY PANEL                                       -->
+                <!-- ================================================= -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -140,24 +166,62 @@
                     android:orientation="vertical"
                     android:padding="8dp">
 
+                    <!-- Memory title -->
                     <TextView
                         android:id="@+id/TVMemoryTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
                         android:textColor="?attr/colorAccent"
-                        android:textStyle="bold"
                         android:textSize="12.5sp"
-                        android:layout_marginBottom="4dp" />
+                        android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/TVMemoryInfo"
+
+                    <!-- ================================================= -->
+                    <!-- MEMORY SELECTOR                                     -->
+                    <!-- ================================================= -->
+
+                    <LinearLayout
+                        android:id="@+id/LLMemorySelector"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="11.5sp"
-                        android:singleLine="true"
-                        android:textColor="#FFFFFF" />
+                        android:layout_height="36dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="2dp">
+
+                        <!-- Current RAM information -->
+                        <TextView
+                            android:id="@+id/TVMemoryInfo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:textColor="#FFFFFF"
+                            android:textSize="11.5sp" />
+
+                        <!-- Dropdown arrow -->
+                        <TextView
+                            android:id="@+id/TVMemoryArrow"
+                            android:layout_width="24dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="▼"
+                            android:textColor="?attr/colorAccent"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
+
             </LinearLayout>
+
         </ScrollView>
+
     </LinearLayout>
+
 </HorizontalScrollView>
