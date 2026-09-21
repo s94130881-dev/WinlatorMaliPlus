@@ -94,7 +94,7 @@ android {
         targetSdkVersion 28
 
         versionCode 21
-        versionName "1.0 Bionic"
+        versionName "1.3 Bionic"
 
         // External native build from Winlator
         externalNativeBuild {
